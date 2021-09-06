@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <%- include('./templates/header') %>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <%- include('./templates/navbar') %>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h3>Agregar Producto</h3>
+            </div>
+            <form method="post">
+                <div class="row m-3">
+                    <label for="code" class="col-sm-2 col-form-label">Código</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="code" class="form-control" id="code" pattern="[0-9]+" required>
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-sm-6">
+                        <label for="lastName" class="form-label">Cantidad</label>
+                        <input type="text" name="lastName" id="lastName" class="form-control" pattern="[0-9]+" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="name" class="form-label">Peso</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row m-3">
+                    <div class="col-sm-6">
+                        <label for="dpto" class="form-label">Tipo de Producto</label>
+                        <select id="dpto" class="form-select" name="dpto" required>
+                            <option value="">Seleccione Tipo de producto...</option>
+                            <%typeAliment.forEach(dpto => { %>
+                                <option value = "<%= dpto.code%>"><%= dpto.name%></option>
+                            <%})%>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="towns" class="form-label">Producto</label>
+                        <select id="towns" name="town" class="form-select">
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row m-3">
+                    <div class="col-sm-6">
+                        <label for="email" class="form-label">Stock</label>
+                        <input type="text" id="email" name="email" class="form-control" pattern="[0-9]+" required>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="phone" class="form-label">Precio</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]+" required>
+                    </div>
+                </div>
+                <div align="center">
+                    <button type="submit" class="btn btn-primary">Enviar Datos</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var  dataTowns = <%- JSON.stringify(aliments) %>
+    var  dataDptos = <%- JSON.stringify(typeAliment) %>
+</script>
+<%- include('./templates/footer') %>
+</body>
+</html>

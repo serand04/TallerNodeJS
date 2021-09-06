@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang='es'>
+    <head>
+        <%- include('./templates/header')%>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <%- include('./templates/navbar')%>
+                </div>
+                <div class="card-body">
+                    <%if(aliments.length){%>
+                        <table class="table table-striped bm-2">
+                            <thead>
+                                <th>Código</th>
+                                <th>Cantidad</th>
+                                <th>Peso</th>
+                                <th>Alimento-TipoAlimento</th>
+                                <th>Stock</th>
+                                <th>Precio</th>
+                            </thead>
+                            <tbody>
+                                <% aliments.forEach(aliment => { %>
+                                    <tr>
+                                        <td><%= aliment.code %></td>
+                                        <td><%= aliment.lastName %></td>
+                                        <td><%= aliment.name %></td>
+                                        <td><%= aliment.city %></td>
+                                        <td><%= aliment.phone %></td>
+                                        <td><%= aliment.email %></td>
+                                    </tr>
+                                <%})%>
+                            </tbody>
+                        </table>
+                    <%}else{%>
+                        <h5>No hay Productos agregados aún</h5>
+                    <%}%>
+                    <a class="btn btn-primary" href="/insert" role="button">Agregar Producto</a>
+                </div>
+            </div>
+        </div>
+        <%- include('./templates/footer')%>
+    </body>
+</html>
